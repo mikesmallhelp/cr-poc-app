@@ -18,10 +18,7 @@ export default async function Home() {
       {error ? (
         <p className="text-red-500">{error}</p>
       ) : (
-        <div className="mb-4">
-          <h2 className="text-xl font-semibold mb-2">Nykyinen arvo:</h2>
-          <p className="p-2 bg-gray-100 rounded">{currentData || 'Ei arvoa'}</p>
-        </div>
+        <div></div>
       )}
       <ClientForm initialData={currentData} />
     </div>
