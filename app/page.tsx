@@ -1,5 +1,5 @@
 import { getData } from '@/lib/actions'
-import ClientForm from '@/app/ClientForm'
+import ClientForm from '@/app/client-form'
 
 export default async function Home() {
   let currentData: string | null = null
