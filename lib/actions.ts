@@ -12,13 +12,9 @@ export async function getData() {
   }
 }
 
-export async function setData(formData: FormData) {
+export async function setData(data: string) {
   try {
-    const newData = formData.get('data');
-    if (typeof newData !== 'string' || newData.trim() === '') {
-      throw new Error('Invalid data');
-    }
-    await setDataToDb(newData);
+    await setDataToDb(data);
     revalidatePath('/');
   } catch (error) {
     console.error('Error in setData action:', error);

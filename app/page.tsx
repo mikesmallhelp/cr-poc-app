@@ -1,14 +1,15 @@
-import { getData, setData } from '@/lib/actions';
+import { getData } from '@/lib/actions'
+import ClientForm from '@/app/ClientForm'
 
 export default async function Home() {
-  let currentData: string | null = null;
-  let error: string | null = null;
+  let currentData: string | null = null
+  let error: string | null = null
 
   try {
-    currentData = await getData();
+    currentData = await getData()
   } catch (e) {
-    error = 'Failed to fetch data';
-    console.error(error, e);
+    error = 'Failed to fetch data'
+    console.error(error, e)
   }
 
   return (
@@ -22,18 +23,7 @@ export default async function Home() {
           <p className="p-2 bg-gray-100 rounded">{currentData || 'Ei arvoa'}</p>
         </div>
       )}
-      <form action={setData} className="mt-4">
-        <h2 className="text-xl font-semibold mb-2">Syötä uusi arvo:</h2>
-        <input
-          type="text"
-          name="data"
-          className="p-2 border rounded mr-2"
-          required
-        />
-        <button type="submit" className="p-2 bg-blue-500 text-white rounded">
-          Tallenna
-        </button>
-      </form>
+      <ClientForm initialData={currentData} />
     </div>
-  );
+  )
 }
