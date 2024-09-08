@@ -25,6 +25,7 @@ export async function getData() {
 
 export async function setData(newData: string) {
   try {
+    await db.delete(dataTable).execute();
     await db.insert(dataTable).values({ data: newData })
       .onConflictDoUpdate({ target: dataTable.id, set: { data: newData } });
   } catch (error) {
