@@ -1,7 +1,6 @@
 'use server'
 
 import { getData as getDataFromDb, setData as setDataToDb } from '@/db';
-import { revalidatePath } from 'next/cache';
 
 export async function getData() {
   try {
@@ -15,7 +14,6 @@ export async function getData() {
 export async function setData(data: string) {
   try {
     await setDataToDb(data);
-    revalidatePath('/');
   } catch (error) {
     console.error('Error in setData action:', error);
     throw new Error('Failed to set data');
